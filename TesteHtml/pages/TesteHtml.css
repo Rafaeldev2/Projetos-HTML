@@ -1,0 +1,142 @@
+html, body{
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: green;
+}
+
+nav{
+    height: 15%;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+}
+
+.navbar {
+    // scss-docs-start navbar-css-vars
+    --#{$prefix}navbar-padding-x: #{if($navbar-padding-x == null, 0, $navbar-padding-x)};
+    --#{$prefix}navbar-padding-y: #{$navbar-padding-y};
+    --#{$prefix}navbar-color: #{$navbar-light-color};
+    --#{$prefix}navbar-hover-color: #{$navbar-light-hover-color};
+    --#{$prefix}navbar-disabled-color: #{$navbar-light-disabled-color};
+    --#{$prefix}navbar-active-color: #{$navbar-light-active-color};
+    --#{$prefix}navbar-brand-padding-y: #{$navbar-brand-padding-y};
+    --#{$prefix}navbar-brand-margin-end: #{$navbar-brand-margin-end};
+    --#{$prefix}navbar-brand-font-size: #{$navbar-brand-font-size};
+    --#{$prefix}navbar-brand-color: #{$navbar-light-brand-color};
+    --#{$prefix}navbar-brand-hover-color: #{$navbar-light-brand-hover-color};
+    --#{$prefix}navbar-nav-link-padding-x: #{$navbar-nav-link-padding-x};
+    --#{$prefix}navbar-toggler-padding-y: #{$navbar-toggler-padding-y};
+    --#{$prefix}navbar-toggler-padding-x: #{$navbar-toggler-padding-x};
+    --#{$prefix}navbar-toggler-font-size: #{$navbar-toggler-font-size};
+    --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-light-toggler-icon-bg)};
+    --#{$prefix}navbar-toggler-border-color: #{$navbar-light-toggler-border-color};
+    --#{$prefix}navbar-toggler-border-radius: #{$navbar-toggler-border-radius};
+    --#{$prefix}navbar-toggler-focus-width: #{$navbar-toggler-focus-width};
+    --#{$prefix}navbar-toggler-transition: #{$navbar-toggler-transition};
+    // scss-docs-end navbar-css-vars
+  
+    position: relative;
+    display: flex;
+    flex-wrap: wrap; // allow us to do the line break for collapsing content
+    align-items: center;
+    justify-content: space-between; // space out brand from logo
+    padding: var(--#{$prefix}navbar-padding-y) var(--#{$prefix}navbar-padding-x);
+    @include gradient-bg();
+  
+    // Because flex properties aren't inherited, we need to redeclare these first
+    // few properties so that content nested within behave properly.
+    // The `flex-wrap` property is inherited to simplify the expanded navbars
+    %container-flex-properties {
+      display: flex;
+      flex-wrap: inherit;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    > .container,
+    > .container-fluid {
+      @extend %container-flex-properties;
+    }
+  
+    @each $breakpoint, $container-max-width in $container-max-widths {
+      > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
+        @extend %container-flex-properties;
+      }
+    }
+  }
+
+nav a{
+    color: darkorange;
+}
+
+footer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: yellow;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+}
+
+.btn-bd-primary {
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+    --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+    --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
+  }
+
+#titleH1{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+
+#contentDoctor{
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+
+
+#SocialMedia{
+    height: 100%;
+    width: 33%;
+}
+#copyright{
+    height: 100%;
+    width: 33%;
+}
+#MyContacts{
+    height: 100%;
+    width: 33%;
+}
